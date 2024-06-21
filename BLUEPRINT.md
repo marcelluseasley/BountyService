@@ -1,23 +1,23 @@
-Creating a Bounty microservice along with an Authentication microservice in a system that uses PostgreSQL for data storage, Gorm as an ORM tool, and JWT for authentication involves several detailed steps. Here’s how we will proceed:
+Creating a Bounty microservice along with an Authentication microservice in a system that uses PostgreSQL for data storage, pgx for database actions, and JWT for authentication involves several detailed steps. Here’s how we will proceed:
 
 ### Step 1: Define System Requirements and Architecture
 1. **Identify Functional Requirements**: Define what functionalities your Bounty and Authentication services need to support. This includes user authentication, JWT creation with custom claims, bounty creation, viewing, updating, and claiming bounties.
-2. **Choose Technology Stack**: Confirm the use of Go, PostgreSQL, Gorm for ORM, and JWT for handling security.
+2. **Choose Technology Stack**: Confirm the use of Go, PostgreSQL, pgx/migrate, and JWT for handling security.
 3. **Define Microservice Architecture**: Plan how these microservices will interact with each other and other parts of your system.
 
 ### Step 2: Setup Development Environment
 1. **Install Go and Setup Go Environment**: Make sure Go is installed and set up correctly on your development machine.
 2. **Set Up PostgreSQL**: Install PostgreSQL and create the necessary databases and roles.
-3. **Install Gorm**: Add Gorm to your project to handle interactions with your PostgreSQL database.
+3. **Install pgx**: Add pgx to your project to handle interactions with your PostgreSQL database.
 
 ### Step 3: Implement Authentication Service
-1. **User Model and Database Setup**: Define a user model and use Gorm to create corresponding tables in PostgreSQL.
+1. **User Model and Database Setup**: Define a user model and use migrate to create corresponding tables in PostgreSQL.
 2. **Password Hashing**: Implement password hashing using Argon2id to store user passwords securely.
 3. **JWT Handling**: Develop functionality to create JWTs with custom claims based on user data (like user role, location, etc.).
 4. **Login and Registration Endpoints**: Create API endpoints for user registration and login, returning JWT upon successful authentication.
 
 ### Step 4: Implement Bounty Microservice
-1. **Bounty Model and Database Setup**: Define a bounty model and use Gorm for managing database operations.
+1. **Bounty Model and Database Setup**: Define a bounty model and use pgx for managing database operations.
 2. **CRUD Operations**: Implement endpoints for creating, reading, updating, and deleting bounties. Make sure these endpoints handle data according to business logic.
 3. **Authorization Middleware**: Develop middleware to verify JWT and check custom claims to restrict or allow access to different bounties based on the user’s role or other claims.
 
