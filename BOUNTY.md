@@ -8,6 +8,7 @@ To define a model for a bounty in a system where users can view and claim bounti
 - **Title**: A brief title for the bounty.
 - **Description**: A detailed description of what the bounty entails.
 - **Reward**: Quantifies the reward for completing the bounty. This could be in points, currency, or other incentives.
+- **Reward Type**: stars, coins, or currency
 - **Category**: The category of the bounty (e.g., Bug Fix, Feature Request, Documentation).
 - **Status**: Tracks the status of the bounty (e.g., Open, In Progress, Completed, Closed).
 - **Created At**: Timestamp when the bounty was created.
