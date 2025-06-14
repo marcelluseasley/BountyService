@@ -25,6 +25,8 @@ type BountyRequest struct {
 	AssigneeID  int       `json:"assignee_id"`
 }
 
+var createBounty = service.CreateBounty
+
 func CreateBounty(w http.ResponseWriter, r *http.Request) {
 
 	bounty := &db.Bounty{}
@@ -34,7 +36,7 @@ func CreateBounty(w http.ResponseWriter, r *http.Request) {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
 	}
-	createdID, err := service.CreateBounty(bounty)
+	createdID, err := createBounty(bounty)
 	if err != nil {
 		http.Error(w, http.StatusText(http.StatusBadRequest), http.StatusBadRequest)
 		return
