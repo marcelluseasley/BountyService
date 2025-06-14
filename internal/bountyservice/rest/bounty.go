@@ -2,15 +2,13 @@ package rest
 
 import (
 	"encoding/json"
-	
+
 	"net/http"
 	"strconv"
 	"time"
 
 	db "bounty-poc/internal/bountyservice/repo/postgres"
 	"bounty-poc/internal/bountyservice/service"
-
-
 )
 
 type BountyRequest struct {
@@ -27,12 +25,11 @@ type BountyRequest struct {
 	AssigneeID  int       `json:"assignee_id"`
 }
 
-
 func CreateBounty(w http.ResponseWriter, r *http.Request) {
 
 	bounty := &db.Bounty{}
-	// get body from request and store in object of model bounty
-	err := json.NewDecoder(r.Body).Decode(&bounty)
+	// Decode the request body directly into the bounty struct
+	err := json.NewDecoder(r.Body).Decode(bounty)
 	if err != nil {
 		http.Error(w, err.Error(), http.StatusBadRequest)
 		return
@@ -44,4 +41,3 @@ func CreateBounty(w http.ResponseWriter, r *http.Request) {
 	}
 	w.Write([]byte(strconv.Itoa(createdID)))
 }
-
