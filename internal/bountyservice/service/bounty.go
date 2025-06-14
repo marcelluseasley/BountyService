@@ -2,18 +2,12 @@ package service
 
 import (
 	db "bounty-poc/internal/bountyservice/repo/postgres"
-	//"bounty-poc/pkg/models"
 )
 
-var bs db.BountyService
-//var bounty db.Bounty
-
-
+// CreateBounty persists a new bounty using the repository implementation.
+// The previous implementation used a package level interface variable which
+// could lead to unexpected behaviour when accessed concurrently. Instead we
+// directly call the repository method on the provided bounty instance.
 func CreateBounty(b *db.Bounty) (int, error) {
-	bs = b 
-	id, err := bs.CreateBounty()
-	if err != nil {
-		return id, err
-	}
-	return id, nil
+	return b.CreateBounty()
 }
